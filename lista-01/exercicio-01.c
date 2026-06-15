@@ -1,19 +1,19 @@
+// 1. Fazer um programa para receber um n√∫mero inteiro de segundos do
+// usu√°rio e imprimir a quantidade correspondente em horas, minutos e segundos.
+
 #include <stdio.h>
-#include <stdlib.h>
 
-// 1. Fazer um programa para receber um n˙mero inteiro de segundos do usu·rio e imprimir
-// a quantidade correspondente em horas, minutos e segundos.
+int main() {
+    int total;
 
-int main()
-{
-    int totalSegundos;
+    printf("Informe um n√∫mero inteiro de segundos: \n");
+    scanf("%d", &total);
 
-    printf("Informe o total de segundos: ");
-    scanf("%d", &totalSegundos);
+    int horas = total / 3600;
+    int minutos = (total % 3600) / 60;
+    int segundos = total % 60;
 
-    int horas = totalSegundos/3600;
-    int minutos = (totalSegundos%3600)/60; //queremos o resto das horas, e ent„o converter para minutos
-    int segundos = totalSegundos%60;
+    printf("Quantidade em horas: %d, \nQuantidade em minutos: %d, \nQuantidade em segundos: %d \n", horas, minutos, segundos);
 
-    printf("%d hora(s), %d minuto(s) e %d segundo(s).", horas, minutos, segundos);
+return 0;
 }

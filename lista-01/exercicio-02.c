@@ -1,50 +1,56 @@
+// 2. Fazer um programa que recebe 3 valores inteiros do usuário
+// e mostra o maior deles, o menor deles, os valores pares e a média.
+
 #include <stdio.h>
-#include <stdlib.h>
 
-// 2. Fazer um programa que recebe 3 valores inteiros do usuário e mostra o maior deles, o
-// menor deles, os valores pares e a média.
+int maior(int a, int b, int c);
+int menor(int a, int b, int c);
+float media(int a, int b, int c);
+void mostrarPares(int a, int b, int c);
 
-int main()
-{
+int main() {
     int a, b, c;
 
-    printf("Informe tres valores inteiros: ");
-    scanf("%d %d %d", &a, &b, &c);
+    printf("Informe 3 valores inteiros: ");
+    scanf("%d%d%d", &a, &b, &c);
 
-    printf("DEBUG: a=%d, b=%d, c=%d\n", a, b, c);
-    
-    // maior
-    int maior = a;
+    printf("Maior: %d \n", maior(a, b, c));
+    printf("Menor: %d \n", menor(a, b, c));
+    printf("Media: %.2f \n", media(a, b, c));
+    mostrarPares(a, b, c);
 
-    if(b > maior) maior = b;
-    if(c > maior) maior = c;
+    return 0;
+}
 
-    // menor
-    int menor = a;
+int maior(int a, int b, int c) {
+    int m = a;
 
-    if(b < menor) menor = b;
-    if(c < menor) menor = c;
+    if (b > m) m = b;
+    if (c > m) m = c;
 
-    // media
-    float media = (a + b + c)/3.0;
+    return m;
+}
 
-    printf("Maior: %d\n", maior);
-    printf("Menor: %d\n", menor);
-    printf("Media: %.2f\n", media);
+int menor(int a, int b, int c) {
+    int m = a;
 
-    // pares
+    if (b < m) m = b;
+    if (c < m) m = c;
+
+    return m;
+}
+
+float media(int a, int b, int c) {
+    float media = (a+b+c)/3.0;
+
+    return media;
+}
+
+void mostrarPares(int a, int b, int c) {
     printf("Valores pares: ");
 
-    if(a % 2 == 0){
-        printf("%d ", a);
-    }
-
-    if(b % 2 == 0){
-        printf("%d ", b);
-    }
-
-    if(c % 2 == 0){
-        printf("%d ", c);
-    }
-    return 0;
+    if (a%2==0) printf("%d", a);
+    if (b%2==0) printf("%d", b);
+    if (c%2==0) printf("%d", c);
+    printf("\n");
 }
