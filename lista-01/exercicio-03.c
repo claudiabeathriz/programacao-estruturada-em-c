@@ -24,4 +24,5 @@ float retornarResultado(int a, int b, char c) {
     if (c == '*') return a * b;
     if (c == '/') return a / b;
     else printf("Operacao invalida!");
+    return 0;
 }
