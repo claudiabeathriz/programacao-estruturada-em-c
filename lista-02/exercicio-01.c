@@ -14,24 +14,25 @@ int main() {
     scanf("%d", &num);
 
     isPrime(num);
+
+    return 0;
 }
 
 void isPrime(int num) {
-    int i = 1;
-    bool isPrime = true;
+    bool primo = true;
 
     if (num <= 1) {
-        isPrime = false; // numeros menores ou iguais a 1 nao sao primos
+        primo = false; // numeros menores ou iguais a 1 nao sao primos
     } else {
-        for (i = 2; i <= num / 2; i++) {
+        for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) {
-                isPrime = false; // encontrou um divisor, nao primo
+                primo = false; // encontrou um divisor, nao primo
                 break;
             }
         }
     }
 
-    if (isPrime) {
+    if (primo) {
         printf("NUMERO PRIMO\n");
     } else {
         printf("NUMERO NAO PRIMO\n");
