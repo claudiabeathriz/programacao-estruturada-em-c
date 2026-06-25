@@ -21,9 +21,8 @@ int main() {
 void isPrime(int num) {
     bool primo = true;
 
-    if (num <= 1) {
-        primo = false; // numeros menores ou iguais a 1 nao sao primos
-    } else {
+    if (num <= 1) primo = false; // numeros menores ou iguais a 1 nao sao primos
+    else {
         for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) {
                 primo = false; // encontrou um divisor, nao primo
