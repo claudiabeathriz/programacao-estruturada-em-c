@@ -2,13 +2,6 @@ Lista de Exercícios 3:
 
 Ponteiros:
 
-1. Implemente a função calcula_circulo, que calcula a área e a circunferência de um círculo de raio
-   r. Essa função deve obedecer o protótipo:
-   void calc_circulo(float r, float _ circunferencia, float _ area);
-   Fórmulas:
-   A = π r
-   2 ; c = 2 π r ; π = 3.14159265
-   Note que essa passagem dos 2 últimos parâmetros é uma passagem por referência.
 2. Seja o seguinte trecho de programa:
    int i=3,j=5;
    int *p, *q;
@@ -29,9 +22,9 @@ Ponteiros:
    max e min devem assumir os valores do menor e do maior divisores inteiros do número,
    respectivamente, desconsiderando o número 1 e o próprio número num.
 
-Ponteiros e Vetores: 5. Implemente a função max_vet, que recebe como parâmetro um vetor de números de ponto
+Ponteiros e Vetores: 5. Implemente a função max*vet, que recebe como parâmetro um vetor de números de ponto
 flutuante (vet) de tamanho n e retorna o maior número armazenado nesse vetor. Essa função deve
-obedecer o protótipo: float max_vet (int n, float _ vet);
+obedecer o protótipo: float max_vet (int n, float * vet);
 Faça também a função main. 6. Implemente a função maiores, que recebe como parâmetro um vetor de números inteiros (vet) de
 tamanho n e um valor x. A função deve retornar quantos números maiores do que x existem nesse
 vetor. Essa função deve obedecer ao protótipo:
@@ -44,7 +37,7 @@ a. *pti é igual a 10
 b. _(pti+2) é igual a 2
 c. pti[4] é igual a 3
 d. pti[1] é igual a 10
-e. _(veti+3) é igual a 6
+e. \_(veti+3) é igual a 6
 
 8. Qual é o resultado do seguinte programa?
    #include <conio.h>
