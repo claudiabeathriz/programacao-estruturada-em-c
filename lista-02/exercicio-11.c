@@ -16,7 +16,7 @@ int main() {
 
     resultado = pow(base, expoente);
 
-    printf("%d elevado a %d é: %lld\n", base, expoente, resultado);
+    printf("%d elevado a %d é: %d\n", base, expoente, resultado);
 
     return 0;
 }
