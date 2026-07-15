@@ -10,18 +10,15 @@ int divs(int num, int *max, int *min) {
     *min = 0; 
     *max = 0;
 
-    for (int i = 2; i <= num / 2; i++) {
+    for (int i = 2; i <= num / i; i++) {
 
         if (num % i == 0) {
-            if (*max == 0) *min = i;
+            if (*min == 0) *min = i;
 
-            *max = i;
+            *max = num/i;
         }
     }
 
-    if (*max == 0) {
-        return 0; // número é primo
-    } else {
-        return 1; // número não é primo
-    }
+    if (*max == 0) return 0; // número é primo
+    else return 1; // número não é primo
 }
