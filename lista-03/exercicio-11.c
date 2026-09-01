@@ -4,15 +4,15 @@
 
 #include <stdio.h>
 
-struct Pessoa {
+typedef struct {
     int idade;
     float altura;
     char sexo;
-};
+} Pessoa;
 
 void calcular_variancia(int n, float alturas[], float *variancia);
-int contar_mulheres_20_35(struct Pessoa pessoas[], int n);
-int contar_homens_altos(struct Pessoa pessoas[], int n);
+int contar_mulheres_20_35(Pessoa pessoas[], int n);
+int contar_homens_altos(Pessoa pessoas[], int n);
 
 int main(){
     int n;
@@ -24,7 +24,7 @@ int main(){
         return 1;
     }
 
-    struct Pessoa pessoas[n];
+    Pessoa pessoas[n];
 
     for (int i = 0; i < n; i++) {
         printf("Informe a idade da pessoa %d: ", i + 1);
@@ -55,7 +55,7 @@ int main(){
 
 }
 
-int contar_mulheres_20_35(struct Pessoa pessoas[], int n) {
+int contar_mulheres_20_35(Pessoa pessoas[], int n) {
     int contador = 0;
     for (int i = 0; i < n; i++) {
         if (pessoas[i].sexo == 'F' && 
@@ -67,7 +67,7 @@ int contar_mulheres_20_35(struct Pessoa pessoas[], int n) {
     return contador;
 }
 
-int contar_homens_altos(struct Pessoa pessoas[], int n) {
+int contar_homens_altos(Pessoa pessoas[], int n) {
     int contador = 0;
     for (int i = 0; i < n; i++) {
         if (pessoas[i].sexo == 'M' && 
