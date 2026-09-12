@@ -1,4 +1,4 @@
-// 5. Implemente uma função que receba como parâmetros um vetor de números inteiros v e seu
+// 4. Implemente uma função que receba como parâmetros um vetor de números inteiros v e seu
 // comprimento n, e verifique se os elementos do vetor correspondem aos termos de uma PA
 // (Progressão Aritmética), isto é, se existe um número inteiro k tal que v[i]=v[0]+k*i. Caso os
 // elementos do vetor correspondam aos termos de uma PA, a função deve retornar o valor
