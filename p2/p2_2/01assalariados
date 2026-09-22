@@ -1,0 +1,72 @@
+// Escreva as funções cadastra e imprime. Não se esqueça de usar as funções strcpy e malloc 
+// na sua solução.
+// (O código base da struct e da main está estruturado abaixo)
+
+// O que você precisa entender:
+// Ponteiro duplo (Assalariados **ptr) é usado tipicamente para criar vetores dinâmicos de ponteiros 
+// (como matrizes irregulares ou listas de estruturas alocadas separadamente).
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+char *estado[27] = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB",
+                    "PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"};
+
+typedef struct assalariados {
+    char nome[51]; 
+    char sexo;
+    int idade; 
+    float salario;
+    char estado[3];
+} Assalariados;
+
+// Função cadastra: aloca um novo registro e preenche os campos usando ponteiros
+Assalariados* cadastra(char *nome, char *sexo, int idade, float salario, char *estado) {
+    Assalariados *novo = (Assalariados*) malloc(sizeof(Assalariados));
+    if (novo == NULL) {
+        printf("Falta memória!\n");
+        exit(1);
+    }
+    strcpy(novo->nome, nome);
+    novo->sexo = sexo[0]; // char único
+    novo->idade = idade;
+    novo->salario = salario;
+    strcpy(novo->estado, estado);
+    return novo;
+}
+
+// Função imprime: percorre o vetor de ponteiros para Assalariados e exibe os dados
+void imprime(Assalariados **ptr, int numAssalariados) {
+    int i;
+    for (i = 0; i < numAssalariados; i++) {
+        printf("Nome: %s | Sexo: %c | Idade: %d | Salario: %.2f | Estado: %s\n",
+               ptr[i]->nome, ptr[i]->sexo, ptr[i]->idade, ptr[i]->salario, ptr[i]->estado);
+    }
+}
+
+int main() {
+    Assalariados **pessoas;
+    int numAssalariados = 3;
+    
+    // Aloca vetor de ponteiros (ponteiro duplo)
+    pessoas = (Assalariados**) malloc(numAssalariados * sizeof(Assalariados*));
+    if (pessoas == NULL) {
+        printf("Falta memória\n"); 
+        exit(1);
+    }
+    
+    pessoas[0] = cadastra("Fulano de tal", "M", 45, 1500.00, "RJ");
+    pessoas[1] = cadastra("Cicrano", "M", 50, 2500.00, "BA");
+    pessoas[2] = cadastra("Beltrano", "M", 42, 500.00, "MG");
+    
+    imprime(pessoas, numAssalariados);
+    
+    // Liberando a memória alocada (cada struct e depois o vetor de ponteiros)
+    for(int i = 0; i < numAssalariados; i++) {
+        free(pessoas[i]);
+    }
+    free(pessoas);
+    
+    return 0;
+}
