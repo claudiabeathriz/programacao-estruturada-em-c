@@ -1,0 +1,82 @@
+// Considere uma lista encadeada que armazena em cada nó a informação sobre um compromisso. 
+// O elemento da lista é do tipo Elemento, descrito abaixo:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+Elemento* listaInsere(Elemento* lst, char *descricao, int dia, int mes, int ano);
+
+typedef struct data {
+    int dia, mes, ano;
+} Data;
+
+typedef struct compromisso {
+    char descricao[81];     
+    Data data;               
+} Compromisso;
+
+typedef struct elemento {
+    Compromisso compr;
+    struct elemento *prox;
+} Elemento;
+
+int main(void) {
+    Elemento *lista = NULL;
+    lista = listaInsere(lista, "compromisso um", 25, 11, 10);
+    lista = listaInsere(lista, "compromisso dois", 30, 11, 10);
+}
+
+// Escreva uma função que insere um novo Elemento e o preenche com os valores recebidos como parâmetro, 
+// a qual retorna um ponteiro para o início da lista, que é o novo elemento inserido:
+// Elemento* listaInsere(Elemento* lst, char *descricao, int dia, int mes, int ano);
+
+// Utilize a função strcpy para copiar strings na função cadastra, a qual pertence à biblioteca 
+// string.h e possui o seguinte protótipo: char* strcpy(char *destino, char *origem);
+// Não se esqueça de usar a função malloc para alocar o novo elemento.
+
+// Implementação da função solicitada na questão
+Elemento* listaInsere(Elemento* lst, char *descricao, int dia, int mes, int ano) {
+    // 1. Alocar dinamicamente um novo elemento na memória (Heap)
+    Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
+    
+    // Verificar se a alocação deu certo
+    if (novo == NULL) {
+        printf("Erro: Falta de memória!\n");
+        exit(1);
+    }
+    
+    // 2. Copiar a string de descrição usando strcpy (conforme a dica)
+    strcpy(novo->compr.descricao, descricao);
+    
+    // 3. Preencher os campos da data dentro do compromisso
+    novo->compr.data.dia = dia;
+    novo->compr.data.mes = mes;
+    novo->compr.data.ano = ano;
+    
+    // 4. Fazer o novo elemento apontar para o antigo início da lista
+    novo->prox = lst;
+    
+    // 5. Retornar o ponteiro para o novo elemento (ele passa a ser a nova cabeça da lista)
+    return novo;
+}
+
+// Alocação Dinâmica (malloc):
+// Sempre que criamos um novo nó em tempo de execução para uma lista encadeada, 
+// precisamos usar o malloc passando o tamanho exato da struct (sizeof(Elemento)). 
+// Isso garante que o nó continuará existindo na memória mesmo após a função terminar.
+
+// Manipulação de Vetores de Caracteres (strcpy):
+// Em C, você não pode atribuir diretamente um texto a um vetor de caracteres já declarado 
+// usando o operador = (ex: novo->compr.descricao = descricao; gera erro de compilação). 
+// É obrigatório usar a função strcpy(destino, origem) da biblioteca <string.h>.
+
+// Estruturas Aninhadas (-> e .):
+// Como o ponteiro novo aponta para um Elemento, acessamos seus campos internos com a seta (novo->compr).
+// Como compr é uma struct comum (e não um ponteiro), acessamos os campos dela com ponto (compr.data), 
+// e o mesmo para a data (data.dia). Ficando assim: novo->compr.data.dia.
+
+// Inserção no Início:
+// O novo elemento precisa ser enfiado na frente de todos. Fazemos isso fazendo o novo->prox 
+// apontar para a cabeça antiga da lista (lst). Em seguida, a função retorna o endereço de novo, 
+// atualizando a variável lista na main para que ela aponte sempre para o primeiro elemento atual.
