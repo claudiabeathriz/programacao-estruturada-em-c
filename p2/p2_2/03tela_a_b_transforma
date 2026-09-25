@@ -1,0 +1,36 @@
+// Mostre o que será impresso na tela em (a) e (b):
+
+// O que você precisa entender:
+// Acompanhe passo a passo o valor retornado pela recursão de transforma(n), 
+// que acumula adições de 7 a cada chamada decrescente até n == 1.
+
+#include <stdio.h>
+
+// Parte (b) - Função recursiva
+int transforma(int n) {
+    if (n == 1) return 1;
+    else return (7 + transforma(n - 1));
+}
+
+int main(void) {
+    // --- PARTE A ---
+    char frase[80] = "Quem ensina aprende ao ensinador"; // (ajustado conforme o contexto da imagem)
+    char *p;
+    p = frase;
+    
+    // Simulação dos prints da parte A da prova:
+    printf("Parte A - (1) %c\n", p[3]); // Imprime o 4º caractere ('m')
+    p[3] = 'X';
+    p[13] = '\0';
+    printf("Parte A - (2) %s\n", frase);
+    p = p + 3;
+    printf("Parte A - (3) %s\n", p);
+
+    // --- PARTE B ---
+    printf("\nParte B:\n");
+    printf("%d\n", transforma(2)); // 7 + 1 = 8
+    printf("%d\n", transforma(4)); // 7 + 7 + 7 + 1 = 22
+    printf("%d\n", transforma(5)); // 7 + 7 + 7 + 7 + 1 = 29
+    
+    return 0;
+}
