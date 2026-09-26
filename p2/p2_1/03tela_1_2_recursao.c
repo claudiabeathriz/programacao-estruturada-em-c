@@ -67,8 +67,6 @@ Agora começa a parte que costuma confundir.
 Quando funcao(1) retorna 1, a chamada funcao(2) finalmente consegue terminar esta linha:
 return funcao(n - 1) + 3;
 
-
-Vamos substituir os valores literalmente:
 Resolução dos retornos
 1º retorno: funcao(1)
 1

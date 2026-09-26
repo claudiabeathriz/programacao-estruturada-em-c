@@ -2,7 +2,7 @@
 // assinale a alternativa incorreta caso exista e corrija a afirmação:
 // ( ) A alocação do vetor linha ocorre com: a = (float **) malloc(numLinhas * sizeof(float *));
 // ( ) A alocação do elemento i do vetor linha ocorre com: 
-// a[i] = (float *) malloc(numColunas * sizeof(float));
+//      a[i] = (float *) malloc(numColunas * sizeof(float));
 // ( ) A tentativa de alocação pode dar errado e ser capturada por if (a == NULL)
 // ( ) O acesso ao elemento linha, coluna é feito com a[linha][coluna]
 // (X) As afirmativas anteriores estão corretas.
